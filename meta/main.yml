@@ -1,0 +1,17 @@
+---
+galaxy_info:
+  author: Melvin Suter
+  company: 
+  description: Configure motd based on facts and some variables 
+  role_name: motd
+  min_ansible_version: 2.4
+  license: GPL
+  platforms:
+  - name: EL
+    versions:
+    - 7
+  galaxy_tags:
+  - motd
+
+dependencies: []
+  

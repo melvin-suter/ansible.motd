@@ -1,0 +1,22 @@
+{{ motd_figlet_header }}
+-----------------------------------
+
+Roles:
+{% for item in motd_roles %}
+  - {{ item }}
+{% endfor %}
+
+Files:
+{% for item in motd_files %}
+  - {{ item }}
+{% endfor %}
+
+Commands:
+{% for item in motd_commands %}
+  - {{ item }}
+{% endfor %}
+
+Notes:
+{% for item in motd_notes %}
+  - {{ item }}
+{% endfor %}

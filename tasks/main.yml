@@ -1,0 +1,16 @@
+---
+
+- name: Install figlet
+  yum:
+    name: figlet
+    state: present
+
+- name: Generate header
+  shell: figlet {{ inventory_hostname }}
+  register: motd_figlet_header
+
+- name: Create motd
+  template:
+    src: motd.j2
+    dest: "{{ motd_path }}"
+...
