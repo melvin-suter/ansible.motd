@@ -2,21 +2,21 @@
 -----------------------------------
 
 Roles:
-{% for item in motd_roles %}
+{% for item in ansible_facts['motd_roles'] %}
   - {{ item }}
 {% endfor %}
 
 Files:
-{% for item in motd_files %}
+{% for item in ansible_facts['motd_files'] %}
   - {{ item }}
 {% endfor %}
 
 Commands:
-{% for item in motd_commands %}
+{% for item in ansible_facts['motd_commands'] %}
   - {{ item }}
 {% endfor %}
 
 Notes:
-{% for item in motd_notes %}
+{% for item in ansible_facts['motd_notes'] %}
   - {{ item }}
 {% endfor %}
