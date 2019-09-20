@@ -1,2 +1,5 @@
 
 motd_path: /etc/motd
+motd_files: /etc/motd.files
+motd_commands: /etc/motd.commands
+motd_notes: /etc/motd.notes

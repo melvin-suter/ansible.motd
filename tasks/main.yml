@@ -13,4 +13,27 @@
   template:
     src: motd.j2
     dest: "{{ motd_path }}"
+
+- name: Add commands header
+  command: printf "\n\nCommands:" >> {{ motd_path }}
+
+- name: Add commands
+  command: echo "  - {{ item }}" >> {{ motd_path }}
+  with_lines: "{{ motd_commands }}"
+
+- name: Add files header
+  command: printf "\n\nFiles:" >> {{ motd_path }}
+
+- name: Add files
+  command: echo "  - {{ item }}" >> {{ motd_path }}
+  with_lines: "{{ motd_files }}"
+
+
+- name: Add notes header
+  command: printf "\n\n" >> {{ motd_path }}
+
+- name: Add notes
+  command: echo "{{ item }}" >> {{ motd_path }}
+  with_lines: "{{ motd_notes }}"
+
 ...

@@ -2,21 +2,7 @@
 -----------------------------------
 
 Roles:
-{% for item in hostvars[inventory_hostname]['motd_roles'] %}
+{% for item in ansible_play_role_names %}
   - {{ item }}
 {% endfor %}
 
-Files:
-{% for item in hostvars[inventory_hostname]['motd_files'] %}
-  - {{ item }}
-{% endfor %}
-
-Commands:
-{% for item in hostvars[inventory_hostname]['motd_commands'] %}
-  - {{ item }}
-{% endfor %}
-
-Notes:
-{% for item in hostvars[inventory_hostname]['motd_notes'] %}
-  - {{ item }}
-{% endfor %}
