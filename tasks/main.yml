@@ -1,5 +1,22 @@
 ---
 
+- name: Make sure files exist
+  file:
+    path: "{{ item }}"
+    state: present
+    mode: 0664
+  with_items:
+  - "{{ motd_commands }}"
+  - "{{ motd_files }}"
+ 
+- name: Make sure folder exist
+  file:
+    path: "{{ item }}"
+    state: directory
+    mode: 0775
+  with_items:
+  - "{{ motd_notes }}"
+
 - name: Install figlet
   yum:
     name: figlet
