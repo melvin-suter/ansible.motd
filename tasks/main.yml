@@ -8,7 +8,7 @@
   with_items:
   - "{{ motd_commands }}"
   - "{{ motd_files }}"
-  - "{{ motd_notes }}"
+#  - "{{ motd_notes }}"
 
 - name: Install figlet
   yum:
@@ -47,10 +47,10 @@
 - name: Add notes header
   command: printf "\n\n" >> {{ motd_path }}
 
-- name: get notes contents
-  command: cat {{ motd_notes }} 
-  register: notes_cat
-- name: install these items
-  command: echo "{{ item }}" >> {{ motd_path }}  
-  with_items: notes_cat.stdout_lines
+#- name: get notes contents
+#  command: cat {{ motd_notes }} 
+#  register: notes_cat
+#- name: install these items
+#  command: echo "{{ item }}" >> {{ motd_path }}  
+#  with_items: notes_cat.stdout_lines
 ...
