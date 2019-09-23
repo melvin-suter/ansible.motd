@@ -3,7 +3,7 @@
 - name: Make sure files exist
   file:
     path: "{{ item }}"
-    state: file
+    state: touch
     mode: 0664
   with_items:
   - "{{ motd_commands }}"
