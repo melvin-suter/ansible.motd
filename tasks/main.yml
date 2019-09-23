@@ -34,23 +34,30 @@
 - name: Add commands header
   command: printf "\n\nCommands:" >> {{ motd_path }}
 
-- name: Add commands
-  command: echo "  - {{ item }}" >> {{ motd_path }}
-  with_lines: "cat {{ motd_commands }}"
+- name: get commands contents
+  command: cat {{ motd_commands }} 
+  register: commands_cat
+- name: install these items
+  command: echo "  - {{ item }}" >> {{ motd_path }}  
+  with_items: commands_cat.stdout_lines
 
 - name: Add files header
   command: printf "\n\nFiles:" >> {{ motd_path }}
 
-- name: Add files
-  command: echo "  - {{ item }}" >> {{ motd_path }}
-  with_lines: "cat {{ motd_files }}"
-
+- name: get files contents
+  command: cat {{ motd_files }} 
+  register: files_cat
+- name: install these items
+  command: echo "  - {{ item }}" >> {{ motd_path }}  
+  with_items: files_cat.stdout_lines
 
 - name: Add notes header
   command: printf "\n\n" >> {{ motd_path }}
 
-- name: Add notes
-  command: echo "{{ item }}" >> {{ motd_path }}
-  with_lines: "cat {{ motd_notes }}"
-
+- name: get notes contents
+  command: cat {{ motd_notes }} 
+  register: notes_cat
+- name: install these items
+  command: echo "{{ item }}" >> {{ motd_path }}  
+  with_items: notes_cat.stdout_lines
 ...
